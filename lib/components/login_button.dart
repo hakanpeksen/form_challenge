@@ -22,8 +22,6 @@ class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          minimumSize: const Size.fromHeight(60), primary: context.colorScheme.primary),
       onPressed: () async {
         _changeLoading();
         await widget.onCompleted();
@@ -32,7 +30,7 @@ class _LoginButtonState extends State<LoginButton> {
       child: Center(
         child: _isLoading
             ? CircularProgressIndicator(color: context.colorScheme.inversePrimary)
-            : Text(widget.title),
+            : Text(widget.title, style: context.textTheme.headline6),
       ),
     );
   }

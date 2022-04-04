@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../components/login_button.dart';
+import '../../../product/constants/text/text_constants.dart';
 import '../../../product/widget/email_field.dart';
 import '../../../product/widget/password_field.dart';
+import '../../../product/widget/text/custom_text.dart';
 import 'login_view_model.dart';
-import 'package:kartal/kartal.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -17,79 +19,59 @@ class _LoginViewState extends LoginViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(fit: StackFit.expand, children: [
-      Image.asset('assets/images/bg_image.png', fit: BoxFit.cover),
-      Align(
-        child: Text(
-          'Herbalova',
-          style: context.textTheme.headline4?.copyWith(color: Colors.white, fontSize: 36),
+        body: SafeArea(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          children: [
+            context.isMediumScreen
+                ? context.emptySizedHeightBoxLow3x
+                : context.emptySizedHeightBoxHigh,
+            Padding(
+                padding: const EdgeInsets.only(left: 30.0),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: CustomText.headline5(TextConstant.loginText, context: context))),
+
+            context.emptySizedHeightBoxLow,
+            Padding(
+                padding: const EdgeInsets.only(left: 30.0),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(TextConstant.signinText, style: context.textTheme.subtitle1))),
+            context.emptySizedHeightBoxHigh,
+            Form(
+                key: loginFormKey,
+                autovalidateMode:
+                    formAutoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      CustomText.subtitle2(TextConstant.emailText, context: context),
+                      EmailField(textEditingController: emailController),
+                      context.emptySizedHeightBoxLow3x,
+                      CustomText.subtitle2(TextConstant.passwordText, context: context),
+                      PasswordField(controller: passwordController),
+                    ]))),
+            context.isMediumScreen
+                ? SizedBox(height: context.dynamicHeight(0.04))
+                : SizedBox(height: context.dynamicHeight(0.27)),
+            //const Spacer(),
+            TextButton(
+              child: Text(TextConstant.dontHaveAccountText,
+                  style: context.textTheme.headline5?.copyWith(fontSize: 16)),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, signUpRouteName);
+              },
+            ),
+            LoginButton(
+                title: TextConstant.loginText,
+                onCompleted: () async {
+                  await checkSignInForm();
+                }),
+          ],
         ),
       ),
-      DraggableScrollableSheet(
-          initialChildSize: 0.1,
-          maxChildSize: 0.8,
-          minChildSize: 0.1,
-          builder: (context, scrollController) {
-            return Container(
-              color: Colors.white,
-              height: double.maxFinite,
-              child: ListView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(top: 10),
-                controller: scrollController,
-                children: [
-                  Center(child: Container(width: 50, height: 5, color: Colors.yellow)),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Sign to your account',
-                    textAlign: TextAlign.center,
-                    style: context.textTheme.bodyText1
-                        ?.copyWith(color: const Color(0xff121515), fontWeight: FontWeight.bold),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Login',
-                          textAlign: TextAlign.center,
-                          style: context.textTheme.headline5?.copyWith(
-                              color: const Color(0xff121515), fontWeight: FontWeight.bold),
-                        ),
-                        Form(
-                            autovalidateMode: formAutoValidate
-                                ? AutovalidateMode.always
-                                : AutovalidateMode.disabled,
-                            key: loginFormKey,
-                            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                              const Text('Your Email '),
-                              EmailField(
-                                textEditingController: userEmailController,
-                              ),
-                              const Text('Password'),
-                              PasswordField(controller: passwordController),
-                            ])),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 210),
-                  TextButton(
-                    child: const Text("I don’t have account",
-                        style: TextStyle(fontWeight: FontWeight.w300)),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/signup');
-                    },
-                  ),
-                  LoginButton(
-                      title: 'Login',
-                      onCompleted: () async {
-                        await checkSignInForm();
-                      }),
-                ],
-              ),
-            );
-          }),
-    ]));
+    ));
   }
 }

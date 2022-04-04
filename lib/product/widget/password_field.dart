@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../components/form_field.dart';
+import '../constants/text/text_constants.dart';
+import 'icon/secure_icon.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({Key? key, required this.controller}) : super(key: key);
@@ -24,28 +27,22 @@ class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return FormTextField(
-      controller: widget.controller,
-      secure: _isScure,
-      suffixIcon: IconButton(
-        onPressed: () {
-          _changeView();
-        },
-        icon: _isScure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
-      ),
-      validator: _controlValidate,
-    );
+        controller: widget.controller,
+        secure: _isScure,
+        suffixIcon: IconButton(
+            onPressed: () {
+              _changeView();
+            },
+            icon: SecureIcon(isSecure: _isScure)),
+        inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[A-Z|a-z]|[0-9]'))],
+        validator: _controlValidate);
   }
 
   String? _controlValidate(String? value) {
-    value = value?.replaceAll(' ', '');
-
-    bool? hasUppercase = value?.contains(RegExp(r'[A-Z|a-z]')) ?? false;
-    bool? hasDigits = value?.contains(RegExp(r'[0-9]')) ?? false;
-
-    if (value != null && value.length >= _minumumLength && hasDigits && hasUppercase) {
+    if (value != null && value.length >= _minumumLength) {
       return null;
     }
 
-    return 'Şifre en az 1 adet harf ve rakam içermeli ve en az 8 karakter olmalıdır';
+    return TextConstant.notPasswordValid;
   }
 }
