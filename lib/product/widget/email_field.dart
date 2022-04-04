@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
 
 import '../../components/form_field.dart';
+import 'package:kartal/kartal.dart';
 import '../constants/text/text_constants.dart';
 
 class EmailField extends StatelessWidget {
@@ -11,9 +11,14 @@ class EmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormTextField(
-      controller: textEditingController,
-      keyboardType: TextInputType.emailAddress,
-      validator: (value) => (value ?? '').isValidEmail ? null : TextConstant.notEmailValid,
-    );
+        controller: textEditingController,
+        keyboardType: TextInputType.emailAddress,
+        validator: (value) => EmailValidator().isValidEmail(value));
+  }
+}
+
+class EmailValidator {
+  String? isValidEmail(String? data) {
+    return (data?.replaceAll(' ', '') ?? '').isValidEmail ? null : TextConstant.notEmailValid;
   }
 }

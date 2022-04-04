@@ -20,4 +20,8 @@ class TextConstant {
   static const String successSignupText = 'Create User Successfully';
   static const String notLoginValidate = 'Sifre veya email hatalı';
   static const String emailExist = 'Bu Email daha önceden kayıtlıdır';
+
+// İmage
+  static const String imagePath = 'assets/images/bg_image.png';
+  static const String imageTitle = 'Herbalova';
 }
