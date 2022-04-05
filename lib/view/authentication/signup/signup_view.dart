@@ -51,6 +51,7 @@ class _SignUpViewState extends SignUpViewModel {
                   context.emptySizedHeightBoxHigh,
                   Padding(
                       padding: const CustomPadding.medium30Horizontal(), child: buildForm(context)),
+                  SizedBox(height: context.dynamicHeight(0.04)),
                   buildHaveAccountButton(context),
                   LoginButton(
                       title: TextConstant.registerText,

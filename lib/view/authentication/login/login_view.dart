@@ -47,6 +47,7 @@ class _LoginViewState extends LoginViewModel {
                   context.emptySizedHeightBoxHigh, // height: 0.1
                   Padding(
                       padding: const CustomPadding.medium30Horizontal(), child: buildForm(context)),
+                  SizedBox(height: context.dynamicHeight(0.18)),
                   buildDontHaveAccountButton(context),
                   LoginButton(
                       title: TextConstant.loginText,

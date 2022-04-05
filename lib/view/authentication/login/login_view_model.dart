@@ -48,23 +48,17 @@ abstract class LoginViewModel extends State<LoginView> with LoginMixin {
     setState(() {});
   }
 
-  Column buildForm(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Form(
-            autovalidateMode:
-                formAutoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
-            key: loginFormKey,
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              CustomText.subtitle2(TextConstant.emailText, context: context),
-              EmailField(textEditingController: emailController),
-              context.emptySizedHeightBoxLow3x,
-              CustomText.subtitle2(TextConstant.passwordText, context: context),
-              PasswordField(controller: passwordController),
-            ])),
-      ],
-    );
+  Form buildForm(BuildContext context) {
+    return Form(
+        autovalidateMode: formAutoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
+        key: loginFormKey,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          CustomText.subtitle2(TextConstant.emailText, context: context),
+          EmailField(textEditingController: emailController),
+          context.emptySizedHeightBoxLow3x,
+          CustomText.subtitle2(TextConstant.passwordText, context: context),
+          PasswordField(controller: passwordController),
+        ]));
   }
 
   TextButton buildDontHaveAccountButton(BuildContext context) {
