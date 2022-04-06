@@ -12,6 +12,7 @@ class EmailField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormTextField(
         controller: textEditingController,
+        autofillHints: const [AutofillHints.email],
         keyboardType: TextInputType.emailAddress,
         validator: (value) => EmailValidator().isValidEmail(value));
   }

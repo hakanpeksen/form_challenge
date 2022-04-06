@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-mixin LoginMixin {
+class AuthMixin {
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -10,4 +10,6 @@ mixin LoginMixin {
   final double initialChildSize = 0.1;
   final double maxChildSize = 0.8;
   final double minChildSize = 0.1;
+
+  final homeRouteName = '/home';
 }

@@ -28,6 +28,7 @@ class _PasswordFieldState extends State<PasswordField> {
   Widget build(BuildContext context) {
     return FormTextField(
         controller: widget.controller,
+        autofillHints: const [AutofillHints.password],
         secure: _isScure,
         suffixIcon: IconButton(
             onPressed: () {

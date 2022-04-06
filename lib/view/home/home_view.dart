@@ -9,10 +9,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(''), automaticallyImplyLeading: false),
-      body: Center(
-          child: Text('Welcome ${SignUpModel.mockUser.username} ',
-              style: context.textTheme.headline5)),
-    );
+        appBar: AppBar(title: const Text('Home View'), automaticallyImplyLeading: false),
+        body: Center(
+            child: Text('Welcome ${SignUpModel.mockUsers.first.username} ',
+                style: context.textTheme.headline5)));
   }
 }

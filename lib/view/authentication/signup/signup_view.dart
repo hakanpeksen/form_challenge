@@ -34,33 +34,33 @@ class _SignUpViewState extends SignUpViewModel {
           minChildSize: minChildSize,
           builder: (context, scrollController) {
             return Container(
-              color: context.colorScheme.onPrimary,
-              child: ListView(
-                // shrinkWrap: true,
-                padding: const CustomPadding.top10(),
-                controller: scrollController,
-                children: [
-                  const CustomSeperate(),
-                  context.emptySizedHeightBoxLow,
-                  CustomAlignText(
-                      child: CustomText.headline5(TextConstant.registerText, context: context)),
-                  context.emptySizedHeightBoxLow,
-                  CustomAlignText(
-                      child:
-                          Text(TextConstant.createAccountText, style: context.textTheme.subtitle1)),
-                  context.emptySizedHeightBoxHigh,
-                  Padding(
-                      padding: const CustomPadding.medium30Horizontal(), child: buildForm(context)),
-                  SizedBox(height: context.dynamicHeight(0.04)),
-                  buildHaveAccountButton(context),
-                  LoginButton(
-                      title: TextConstant.registerText,
-                      onCompleted: () async {
-                        await checkSignUpForm();
-                      }),
-                ],
-              ),
-            );
+                color: context.colorScheme.onPrimary,
+                child: ListView(
+                  // shrinkWrap: true,
+                  padding: const CustomPadding.top10(),
+                  controller: scrollController,
+                  children: [
+                    const CustomSeperate(),
+                    context.emptySizedHeightBoxLow,
+                    CustomAlignText(
+                        child: CustomText.headline5(TextConstant.registerText, context: context)),
+                    context.emptySizedHeightBoxLow,
+                    CustomAlignText(
+                        child: Text(TextConstant.createAccountText,
+                            style: context.textTheme.subtitle1)),
+                    context.emptySizedHeightBoxHigh,
+                    Padding(
+                        padding: const CustomPadding.medium30Horizontal(),
+                        child: buildForm(context)),
+                    SizedBox(height: context.dynamicHeight(0.04)),
+                    buildHaveAccountButton(context),
+                    LoginButton(
+                        title: TextConstant.registerText,
+                        onCompleted: () async {
+                          await checkSignUpForm();
+                        }),
+                  ],
+                ));
           }),
     ]));
   }

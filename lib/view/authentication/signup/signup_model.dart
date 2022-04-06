@@ -3,22 +3,18 @@ class SignUpModel {
   final String email;
   final String password;
 
-  SignUpModel(
-    this.username,
-    this.email,
-    this.password,
-  );
-
-  static SignUpModel get mockUser {
-    return SignUpModel("hakan", "hknpksn@gmail.com", "H1234567");
-  }
+  SignUpModel(this.username, this.email, this.password);
 
   static List<SignUpModel> get mockUsers {
     return [
       SignUpModel("hakan", "hknpksn@gmail.com", "H1234567"),
-      //UserModel(name: "hasan", email: "hasan@gmail.com", password: "5678hn12")
+      SignUpModel("hasan", "hasan@gmail.com", "Ha123456"),
     ];
   }
+
+  // static SignUpModel get mockUser {
+  //   return SignUpModel("hakan", "hknpksn@gmail.com", "H1234567");
+  // }
 
   @override
   bool operator ==(Object other) {

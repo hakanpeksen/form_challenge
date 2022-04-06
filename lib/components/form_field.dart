@@ -10,6 +10,8 @@ class FormTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final List<TextInputFormatter>? inputFormatters;
+  final Iterable<String>? autofillHints;
+  final TextInputAction? textInputAction;
 
   const FormTextField(
       {Key? key,
@@ -19,7 +21,9 @@ class FormTextField extends StatelessWidget {
       this.controller,
       this.keyboardType,
       this.suffixIcon,
-      this.inputFormatters})
+      this.inputFormatters,
+      this.autofillHints,
+      this.textInputAction})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,8 @@ class FormTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         obscureText: secure ?? false,
+        autofillHints: autofillHints,
+        textInputAction: TextInputAction.next,
         validator: validator,
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,

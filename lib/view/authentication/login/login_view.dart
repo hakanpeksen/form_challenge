@@ -31,32 +31,32 @@ class _LoginViewState extends LoginViewModel {
           minChildSize: minChildSize,
           builder: (context, scrollController) {
             return Container(
-              color: context.colorScheme.onPrimary,
-              child: ListView(
-                // shrinkWrap: true,
-                padding: const CustomPadding.top10(),
-                controller: scrollController,
-                children: [
-                  const CustomSeperate(),
-                  context.emptySizedHeightBoxLow, // height: 0.01
-                  CustomAlignText(
-                      child: CustomText.headline5(TextConstant.loginText, context: context)),
-                  context.emptySizedHeightBoxLow,
-                  CustomAlignText(
-                      child: Text(TextConstant.signinText, style: context.textTheme.subtitle1)),
-                  context.emptySizedHeightBoxHigh, // height: 0.1
-                  Padding(
-                      padding: const CustomPadding.medium30Horizontal(), child: buildForm(context)),
-                  SizedBox(height: context.dynamicHeight(0.18)),
-                  buildDontHaveAccountButton(context),
-                  LoginButton(
-                      title: TextConstant.loginText,
-                      onCompleted: () async {
-                        await checkSignInForm();
-                      }),
-                ],
-              ),
-            );
+                color: context.colorScheme.onPrimary,
+                child: ListView(
+                  // shrinkWrap: true,
+                  padding: const CustomPadding.top10(),
+                  controller: scrollController,
+                  children: [
+                    const CustomSeperate(),
+                    context.emptySizedHeightBoxLow, // height: 0.01
+                    CustomAlignText(
+                        child: CustomText.headline5(TextConstant.loginText, context: context)),
+                    context.emptySizedHeightBoxLow,
+                    CustomAlignText(
+                        child: Text(TextConstant.signinText, style: context.textTheme.subtitle1)),
+                    context.emptySizedHeightBoxHigh, // height: 0.1
+                    Padding(
+                        padding: const CustomPadding.medium30Horizontal(),
+                        child: buildForm(context)),
+                    SizedBox(height: context.dynamicHeight(0.18)),
+                    buildDontHaveAccountButton(context),
+                    LoginButton(
+                        title: TextConstant.loginText,
+                        onCompleted: () async {
+                          await checkSignInForm();
+                        }),
+                  ],
+                ));
           }),
     ]));
   }
