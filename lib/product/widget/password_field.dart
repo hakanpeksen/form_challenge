@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../../components/form_field.dart';
 import '../constants/text/text_constants.dart';
 import 'icon/secure_icon.dart';
+import 'package:kartal/kartal.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({Key? key, required this.controller}) : super(key: key);
@@ -15,12 +16,12 @@ class PasswordField extends StatefulWidget {
 }
 
 class _PasswordFieldState extends State<PasswordField> {
-  bool _isScure = true;
+  bool _isSecure = true;
   final int _minumumLength = 8;
 
   void _changeView() {
     setState(() {
-      _isScure = !_isScure;
+      _isSecure = !_isSecure;
     });
   }
 
@@ -29,12 +30,14 @@ class _PasswordFieldState extends State<PasswordField> {
     return FormTextField(
         controller: widget.controller,
         autofillHints: const [AutofillHints.password],
-        secure: _isScure,
+        secure: _isSecure,
         suffixIcon: IconButton(
             onPressed: () {
               _changeView();
             },
-            icon: SecureIcon(isSecure: _isScure)),
+            icon: IconTheme(
+                data: IconThemeData(color: context.colorScheme.surface),
+                child: SecureIcon(isSecure: _isSecure))),
         inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[A-Z|a-z]|[0-9]'))],
         validator: _controlValidate);
   }

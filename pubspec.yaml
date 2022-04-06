@@ -24,10 +24,18 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  # Core Utility
-  kartal: ^2.3.1
-  google_fonts: ^2.3.1
+
+  # Core
   fluttertoast: ^8.0.9
+  google_fonts: ^2.3.1
+  kartal: ^2.3.1
+
+  # State
+  provider: ^6.0.2
+
+  #Cache
+  shared_preferences: ^2.0.13
+
 
 dev_dependencies:
   flutter_lints: ^1.0.0
