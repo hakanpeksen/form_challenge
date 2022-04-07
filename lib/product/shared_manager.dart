@@ -26,13 +26,13 @@ class SharedManager implements ISharedManager {
   }
 
   @override
-  Future<bool> saveTheme(SharedKeys keys, bool value) async {
+  Future<bool>? saveTheme(SharedKeys keys, bool value) async {
     return await _preferences?.setBool(keys.toString(), value) ?? false;
   }
 
   @override
   bool? getBoolValue(SharedKeys keys) {
-    return _preferences?.getBool(keys.toString()) ?? false;
+    return _preferences?.getBool(keys.toString());
   }
 
 // Future<bool> saveTheme(bool t) async {

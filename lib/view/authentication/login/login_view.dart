@@ -4,8 +4,8 @@ import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/login_button.dart';
-import '../../../product/app_command.dart';
 import '../../../product/constants/text/text_constants.dart';
+import '../../../product/shared_manager.dart';
 import '../../../product/theme_notifier.dart';
 import '../../../product/widget/image/auth_image.dart';
 import '../../../product/widget/padding/custom_padding.dart';
@@ -22,11 +22,9 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends LoginViewModel {
-  bool isDark = false;
-
   @override
   Widget build(BuildContext context) {
-    isDark = context.select((ThemeNotifer c) => c.isDark);
+    bool isDark = context.select((ThemeNotifer c) => c.isDark);
 
     return Scaffold(
         body: Stack(fit: StackFit.expand, children: [
@@ -39,8 +37,8 @@ class _LoginViewState extends LoginViewModel {
             icon: const Icon(Icons.sunny, color: Colors.white),
             onPressed: () async {
               isDark = !isDark;
-              await AppCommand().saveTheme(isDark);
-              //context.read<ThemeNotifer>().changeTheme();
+              await SharedManager.instace.saveTheme(SharedKeys.currentTheme, isDark);
+              context.read<ThemeNotifer>().isDark = isDark;
             }),
       ),
       DraggableScrollableSheet(

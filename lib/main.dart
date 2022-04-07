@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'product/app_command.dart';
 import 'product/shared_manager.dart';
 import 'product/theme_notifier.dart';
 import 'view/authentication/login/login_view.dart';
@@ -11,6 +10,7 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runApp(MultiProvider(
@@ -34,9 +34,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> appInit() async {
-    initContext(context);
     await SharedManager.initSharedPrefences();
-    await AppCommand().init();
+    context.read<ThemeNotifer>().isDark =
+        SharedManager.instace.getBoolValue(SharedKeys.currentTheme) ?? false;
   }
 
   @override
