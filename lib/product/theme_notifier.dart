@@ -7,6 +7,7 @@ enum AppThemes { light, dark }
 
 class ThemeNotifer extends ChangeNotifier {
   bool _isDarkTheme = false;
+
   bool get isDark => _isDarkTheme;
 
   /// Applicaton theme enum.
