@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'product/shared_manager.dart';
+import 'product/manager/shared_manager.dart';
 import 'product/theme_notifier.dart';
 import 'view/authentication/login/login_view.dart';
 import 'view/authentication/signup/signup_view.dart';
@@ -46,8 +46,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         home: const LoginView(),
         theme: _currentTheme,
-        // theme: AppThemeLight.instance.themeDataLight,
-        //theme: AppThemeDark.instance.themeDataDark,
         routes: {
           '/home': (context) => const HomeView(),
           '/login': (context) => const LoginView(),

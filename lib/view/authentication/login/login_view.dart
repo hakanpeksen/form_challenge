@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../components/login_button.dart';
 import '../../../product/constants/text/text_constants.dart';
-import '../../../product/shared_manager.dart';
+import '../../../product/manager/shared_manager.dart';
 import '../../../product/theme_notifier.dart';
 import '../../../product/widget/image/auth_image.dart';
 import '../../../product/widget/padding/custom_padding.dart';

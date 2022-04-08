@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'init/theme/app_theme_dark.dart';
-import 'init/theme/theme_manager.dart';
+import 'init/theme/app_theme_light.dart';
 
 enum AppThemes { light, dark }
 
@@ -39,26 +39,3 @@ class ThemeNotifer extends ChangeNotifier {
     return _currentTheme;
   }
 }
-
-
-
-
-
-
-// class ThemeNotifer extends ChangeNotifier {
-//   bool isDarkTheme = false;
-
-//   void changeTheme() {
-//     isDarkTheme = !isDarkTheme;
-//     notifyListeners();
-//   }
-
-//   ThemeData get currentTheme =>
-//       isDarkTheme ? AppThemeDark.instance.themeDataDark : AppThemeLight.instance.themeDataLight;
-// }
-
-
-  // onPressed: () async {
-  //             context.read<ThemeNotifer>().changeTheme();
-  //             await SharedManager.instace.saveTheme(SharedKeys.currentTheme, true);
-  //           }),

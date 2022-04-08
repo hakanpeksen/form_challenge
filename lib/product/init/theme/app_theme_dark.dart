@@ -19,7 +19,6 @@ class AppThemeDark {
   static const red = Colors.red;
 
   ThemeData get themeDataDark => ThemeData(
-        //  scaffoldBackgroundColor: white,
         brightness: Brightness.dark,
         fontFamily: GoogleFonts.karla().fontFamily,
         textTheme: const TextTheme(
@@ -34,10 +33,6 @@ class AppThemeDark {
               color: white,
               fontSize: 16), //elevated button Login, Register text
         ),
-
-        // 14px gray, regular
-        // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        //     selectedItemColor: flamingo, unselectedItemColor: givry),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(60), primary: meadow),
         ),

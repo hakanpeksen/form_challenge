@@ -50,10 +50,6 @@ class AppThemeLight {
               color: white,
               fontSize: 16), //elevated button Login, Register text
         ),
-
-        // 14px gray, regular
-        // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        //     selectedItemColor: flamingo, unselectedItemColor: givry),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(60), primary: meadow),
         ),

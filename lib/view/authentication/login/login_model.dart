@@ -1,6 +1,4 @@
-import '../../../product/mixin/auth_mixin.dart';
-
-class LoginModel with AuthMixin {
+class LoginModel {
   final String email;
   final String password;
 
