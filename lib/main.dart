@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'product/theme_notifier.dart';
+import 'product/init/notifier/theme_notifier.dart';
 import 'view/authentication/login/login_view.dart';
 import 'view/authentication/signup/signup_view.dart';
 import 'view/home/home_view.dart';

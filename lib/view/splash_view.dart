@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import '../product/manager/shared_manager.dart';
-import '../product/theme_notifier.dart';
+import '../product/init/cache/shared_manager.dart';
+import '../product/init/notifier/theme_notifier.dart';
 import 'authentication/login/login_view.dart';
 import 'package:kartal/kartal.dart';
 
@@ -20,7 +20,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    appInit(context);
+    appInit();
 
     Future.delayed(context.durationNormal).then((_) async {
       Navigator.of(context)
@@ -28,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
     });
   }
 
-  Future<void> appInit(BuildContext context) async {
+  Future<void> appInit() async {
     await SharedManager.initSharedPrefences();
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));

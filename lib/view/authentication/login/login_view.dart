@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:form_challenge/product/widget_size.dart';
 
 import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/login_button.dart';
 import '../../../product/constants/text/text_constants.dart';
-import '../../../product/manager/shared_manager.dart';
-import '../../../product/theme_notifier.dart';
+
+import '../../../product/init/cache/shared_manager.dart';
+import '../../../product/init/notifier/theme_notifier.dart';
 import '../../../product/widget/image/auth_image.dart';
 import '../../../product/widget/padding/custom_padding.dart';
 import '../../../product/widget/seperate/custom_seperate.dart';
@@ -31,16 +33,15 @@ class _LoginViewState extends LoginViewModel {
       const AuthImage(),
       Align(child: CustomText.headline6(TextConstant.imageTitle, context: context)),
       Positioned(
-        top: 30,
-        right: 30,
-        child: IconButton(
-            icon: const Icon(Icons.sunny, color: Colors.white),
-            onPressed: () async {
-              isDark = !isDark;
-              await SharedManager.instace.saveTheme(SharedKeys.currentTheme, isDark);
-              context.read<ThemeNotifer>().isDark = isDark;
-            }),
-      ),
+          top: WidgetSize.size30,
+          right: WidgetSize.size30,
+          child: IconButton(
+              icon: Icon(Icons.sunny, color: context.colorScheme.inversePrimary),
+              onPressed: () async {
+                isDark = !isDark;
+                await SharedManager.instace.saveTheme(SharedKeys.currentTheme, isDark);
+                context.read<ThemeNotifer>().isDark = isDark;
+              })),
       DraggableScrollableSheet(
           initialChildSize: initialChildSize,
           maxChildSize: maxChildSize,

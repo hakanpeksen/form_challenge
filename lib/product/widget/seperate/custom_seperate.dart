@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:form_challenge/product/constants/widget_size.dart';
 import 'package:kartal/kartal.dart';
+
+import '../../widget_size.dart';
 
 class CustomSeperate extends StatelessWidget {
   const CustomSeperate({Key? key}) : super(key: key);
