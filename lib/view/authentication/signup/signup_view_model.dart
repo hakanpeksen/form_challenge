@@ -11,10 +11,9 @@ import '../../../product/widget/username_field.dart';
 import '../login/login_view.dart';
 import 'signup_model.dart';
 import 'signup_view.dart';
+import '../../validate_statefull.dart';
 
-abstract class SignUpViewModel extends State<SignUpView> with AuthMixin {
-  bool formAutoValidate = false;
-
+abstract class SignUpViewModel extends ValidateStatefull<SignUpView> with AuthMixin {
   @override
   void dispose() {
     super.dispose();
@@ -52,13 +51,8 @@ abstract class SignUpViewModel extends State<SignUpView> with AuthMixin {
         await Navigator.pushReplacementNamed(context, homeRouteName);
       }
     } else {
-      _changeValidate();
+      changeValidate();
     }
-  }
-
-  void _changeValidate() {
-    formAutoValidate = true;
-    setState(() {});
   }
 
   Form buildForm(BuildContext context) {

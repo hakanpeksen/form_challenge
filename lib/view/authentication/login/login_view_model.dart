@@ -7,13 +7,12 @@ import '../../../product/utility/message.dart';
 import '../../../product/widget/email_field.dart';
 import '../../../product/widget/password_field.dart';
 import '../../../product/widget/text/custom_text.dart';
+import '../../validate_statefull.dart';
 import '../signup/signup_view.dart';
 import 'login_model.dart';
 import 'login_view.dart';
 
-abstract class LoginViewModel extends State<LoginView> with AuthMixin {
-  bool formAutoValidate = false;
-
+abstract class LoginViewModel extends ValidateStatefull<LoginView> with AuthMixin {
   @override
   void dispose() {
     super.dispose();
@@ -46,13 +45,8 @@ abstract class LoginViewModel extends State<LoginView> with AuthMixin {
         Utility.showMessage(text: TextConstant.notLoginValidate, color: context.colorScheme.error);
       }
     } else {
-      _changeValidate();
+      changeValidate();
     }
-  }
-
-  void _changeValidate() {
-    formAutoValidate = true;
-    setState(() {});
   }
 
   Form buildForm(BuildContext context) {
