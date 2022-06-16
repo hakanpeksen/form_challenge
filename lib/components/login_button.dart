@@ -28,10 +28,9 @@ class _LoginButtonState extends State<LoginButton> {
         _changeLoading();
       },
       child: Center(
-        child: _isLoading
-            ? CircularProgressIndicator(color: context.colorScheme.inversePrimary)
-            : Text(widget.title, style: context.textTheme.headline6),
-      ),
+          child: _isLoading
+              ? CircularProgressIndicator(color: context.colorScheme.inversePrimary)
+              : Text(widget.title, style: context.textTheme.headline6)),
     );
   }
 }
